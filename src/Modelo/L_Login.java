@@ -1,0 +1,47 @@
+package Modelo;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author dilan
+ */
+public class L_Login extends ConexionBD {
+    
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    ConexionBD cn = new ConexionBD();
+    
+    public Login log (String username, String constrasenia) {
+        
+        Login l = new Login();
+        
+        String sql = "SELECT * FROM Credenciales WHERE Username = ? and Contrasenia = ?";
+        
+        try {
+            
+            con = cn.getConnection();
+            
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, constrasenia);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                l.setId(rs.getInt("ID_usuarios"));
+                l.setUsername(rs.getString("username"));
+                l.setContrasenia(rs.getString("contrasenia"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return l;
+    } 
+    
+}
