@@ -1,48 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
-// hola
-import Modelo.L_Login;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author dilan
  */
 public class Login extends javax.swing.JFrame {
-
-    L_Login l = new L_Login();
-    Modelo.Login login = new Modelo.Login();
-
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        setLocationRelativeTo(null);
-    }
-
-    public void validar() {
-        String username = txtUsuario.getText();
-        String contrasenia = String.valueOf(txtPassword.getPassword());
-
-        if (!"".equals(username) || !"".equals(contrasenia)) {
-
-            login = l.log(username, contrasenia);
-
-            if (login.getUsername() != null || login.getContrasenia() != null) {
-                
-                Home home = new Home();
-                home.setVisible(true);
-                dispose();
-            
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
     }
 
     /**
@@ -63,7 +29,6 @@ public class Login extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
         setBackground(new java.awt.Color(0, 0, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setSize(new java.awt.Dimension(465, 593));
@@ -85,11 +50,6 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setBackground(new java.awt.Color(0, 0, 0));
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
-            }
-        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
 
@@ -149,11 +109,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
-        validar();
-    }//GEN-LAST:event_btnEntrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -191,12 +146,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEntrar;
+    public javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txtPassword;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

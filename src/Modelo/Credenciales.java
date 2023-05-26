@@ -4,19 +4,32 @@ package Modelo;
  *
  * @author dilan
  */
-public class Login {
+
+/*
+La clase credenciales es la que importa a lo hora de ingresar al sistema
+*/
+public class Credenciales {
     
+    // Se crean atributos de la tabla Credenciales
     private int id;
     private String username;
     private String contrasenia;
     private String privilegio;
 
-    public Login() {
+    public Credenciales() {
+        
+        this.id = 0;
+        this.username = "";
+        this.contrasenia = "";
+        this.privilegio = "";
+        
     }
-
-    public Login(int id, String username) {
+    
+    public Credenciales(int id, String username, String contrasenia, String privilegio) {
         this.id = id;
         this.username = username;
+        this.contrasenia = contrasenia;
+        this.privilegio = privilegio;
     }
 
     public int getId() {
