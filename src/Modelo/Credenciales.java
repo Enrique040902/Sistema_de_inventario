@@ -18,11 +18,6 @@ public class Credenciales {
 
     public Credenciales() {
         
-        this.id = 0;
-        this.username = "";
-        this.contrasenia = "";
-        this.privilegio = "";
-        
     }
     
     public Credenciales(int id, String username, String contrasenia, String privilegio) {

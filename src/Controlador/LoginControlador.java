@@ -41,7 +41,7 @@ public class LoginControlador implements ActionListener{
         validar();
     }
     
-    public void validar() {
+    private void validar() {
         String username = login.txtUsuario.getText();
         String contrasenia = String.valueOf(login.txtPassword.getPassword());
 
@@ -59,6 +59,10 @@ public class LoginControlador implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Llene los campos correspondientes", "ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+            
         }
     }
 
