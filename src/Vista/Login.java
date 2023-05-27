@@ -1,14 +1,21 @@
 package Vista;
-/**
- *
- * @author dilan
- */
+
+import Controlador.LoginControlador;
+import Modelo.ModeloLogin;
+
 public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    LoginControlador loginControlador;
+    ModeloLogin modLogin = new ModeloLogin(); 
+    
     public Login() {
         initComponents();
+        
+        loginControlador = new LoginControlador(this, modLogin);
+        loginControlador.iniciarLogin();
     }
 
     /**

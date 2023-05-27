@@ -15,7 +15,6 @@ public class Usuarios extends javax.swing.JFrame {
      */
     public Usuarios() {
         initComponents();
-        setLocationRelativeTo(null);
     }
 
     /**
@@ -241,6 +240,7 @@ public class Usuarios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Usuarios().setVisible(true);
             }

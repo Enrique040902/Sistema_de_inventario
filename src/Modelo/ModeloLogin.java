@@ -11,7 +11,6 @@ import java.sql.SQLException;
  */
 
 // Esta es la clase es la que se realizan las consultas en la tabla Credenciales
-
 public class ModeloLogin extends ConexionBD {
     
     Connection con;

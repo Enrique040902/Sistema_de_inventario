@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.HomeControlador;
+
 /**
  *
  * @author dilan
@@ -13,9 +15,15 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Sistema
      */
+    
+    HomeControlador homeContralador;
+    
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        homeContralador = new HomeControlador();
+        jmiUsuarios.addActionListener(homeContralador);
     }
 
     /**
@@ -28,17 +36,17 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuBar = new javax.swing.JMenuBar();
+        jmAdminitracion = new javax.swing.JMenu();
+        jmiUsuarios = new javax.swing.JMenuItem();
+        jmiSalir = new javax.swing.JMenuItem();
+        jmHerramientas = new javax.swing.JMenu();
+        jmiClientes = new javax.swing.JMenuItem();
+        jmiProductos = new javax.swing.JMenuItem();
+        jmiProveedores = new javax.swing.JMenuItem();
+        jmEntradasSalidas = new javax.swing.JMenu();
+        jmiEntradas = new javax.swing.JMenuItem();
+        jmiSalidas = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -54,47 +62,42 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenuBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jMenu1.setText("Administración");
+        jmAdminitracion.setText("Administración");
 
-        jMenuItem1.setText("Usuarios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
+        jmiUsuarios.setText("Usuarios");
+        jmAdminitracion.add(jmiUsuarios);
 
-        jMenuItem4.setText("Salir");
-        jMenu1.add(jMenuItem4);
+        jmiSalir.setText("Salir");
+        jmAdminitracion.add(jmiSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jmAdminitracion);
 
-        jMenu2.setText("Herramientas");
+        jmHerramientas.setText("Herramientas");
 
-        jMenuItem5.setText("Clientes");
-        jMenu2.add(jMenuItem5);
+        jmiClientes.setText("Clientes");
+        jmHerramientas.add(jmiClientes);
 
-        jMenuItem7.setText("Productos");
-        jMenu2.add(jMenuItem7);
+        jmiProductos.setText("Productos");
+        jmHerramientas.add(jmiProductos);
 
-        jMenuItem6.setText("Proveedores");
-        jMenu2.add(jMenuItem6);
+        jmiProveedores.setText("Proveedores");
+        jmHerramientas.add(jmiProveedores);
 
-        jMenu6.setText("E/S de productos");
+        jmEntradasSalidas.setText("E/S de productos");
 
-        jMenuItem2.setText("Entradas de producto");
-        jMenu6.add(jMenuItem2);
+        jmiEntradas.setText("Entradas de producto");
+        jmEntradasSalidas.add(jmiEntradas);
 
-        jMenuItem3.setText("Salidas de productos");
-        jMenu6.add(jMenuItem3);
+        jmiSalidas.setText("Salidas de productos");
+        jmEntradasSalidas.add(jmiSalidas);
 
-        jMenu2.add(jMenu6);
+        jmHerramientas.add(jmEntradasSalidas);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar.add(jmHerramientas);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,28 +113,22 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        Usuarios usr = new Usuarios();
-        usr.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    public javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jmAdminitracion;
+    public javax.swing.JMenu jmEntradasSalidas;
+    private javax.swing.JMenu jmHerramientas;
+    public javax.swing.JMenuItem jmiClientes;
+    public javax.swing.JMenuItem jmiEntradas;
+    public javax.swing.JMenuItem jmiProductos;
+    public javax.swing.JMenuItem jmiProveedores;
+    public javax.swing.JMenuItem jmiSalidas;
+    public javax.swing.JMenuItem jmiSalir;
+    public javax.swing.JMenuItem jmiUsuarios;
     // End of variables declaration//GEN-END:variables
 }
