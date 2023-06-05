@@ -12,8 +12,8 @@ import Vista.Usuarios;
 public class HomeControlador implements ActionListener {
 
     Usuarios usuariosFrame = new Usuarios();
-    private boolean usuariosFrameVisible= false;
-
+    private boolean usuariosFrameVisible= false; // Variable que ayuda a no crear más de una ventana
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 

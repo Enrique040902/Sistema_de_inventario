@@ -1,17 +1,12 @@
 package Controlador;
 
-import Modelo.Credenciales;
+import Modelo.CredencialesLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.Login;
 import Modelo.ModeloLogin;
 import Vista.Home;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
  *
@@ -19,27 +14,22 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
  */
 public class LoginControlador implements ActionListener {
 
-    private final Login login;
+    private final Login frmLogin;
     private final ModeloLogin modLogin;
-    private Credenciales credencial;
+    private CredencialesLogin credencial;
 
     public LoginControlador(Login login, ModeloLogin modLogin) {
 
-        this.login = login;
+        this.frmLogin = login;
         this.modLogin = modLogin;
-        this.login.btnEntrar.addActionListener(this);
+        this.frmLogin.btnEntrar.addActionListener(this);
 
     }
 
     // Método que inicia el frame
     public void iniciarLogin() {
-        try {
-            UIManager.setLookAndFeel(new NimbusLookAndFeel());
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        login.setTitle("Login");
-        login.setLocationRelativeTo(null);
+        frmLogin.setTitle("Login");
+        frmLogin.setLocationRelativeTo(null);
     }
 
     @Override
@@ -48,8 +38,8 @@ public class LoginControlador implements ActionListener {
     }
 
     private void validar() {
-        String username = login.txtUsuario.getText();
-        String contrasenia = String.valueOf(login.txtPassword.getPassword());
+        String username = frmLogin.txtUsuario.getText();
+        String contrasenia = String.valueOf(frmLogin.txtPassword.getPassword());
 
         if (!"".equals(username) || !"".equals(contrasenia)) {
 
@@ -59,7 +49,7 @@ public class LoginControlador implements ActionListener {
 
                 Home home = new Home();
                 home.setVisible(true);
-                login.dispose();
+                frmLogin.dispose();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);

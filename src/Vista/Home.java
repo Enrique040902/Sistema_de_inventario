@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.HomeControlador;
 
-/**
- *
- * @author dilan
- */
 public class Home extends javax.swing.JFrame {
 
     /**
@@ -21,6 +13,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setExtendedState(Home.MAXIMIZED_BOTH);
         
         homeContralador = new HomeControlador();
         jmiUsuarios.addActionListener(homeContralador);
@@ -61,6 +54,8 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
+        setMinimumSize(new java.awt.Dimension(1040, 540));
+        setPreferredSize(new java.awt.Dimension(1040, 540));
 
         jMenuBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

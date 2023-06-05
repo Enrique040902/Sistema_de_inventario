@@ -2,7 +2,7 @@ CREATE DATABASE Sistema_inventario;
 USE Sistema_inventario;
 
 CREATE TABLE Usuarios (
-	ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Username VARCHAR(30) NOT NULL,
     
     PRIMARY KEY (ID, Username)

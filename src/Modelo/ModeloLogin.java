@@ -5,22 +5,17 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-/**
- *
- * @author dilan
- */
-
 // Esta es la clase es la que se realizan las consultas en la tabla Credenciales
-public class ModeloLogin extends ConexionBD {
+public class ModeloLogin {
     
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     ConexionBD cn = new ConexionBD();
     
-    public Credenciales log (String username, String constrasenia) {
+    public CredencialesLogin log (String username, String constrasenia) {
         
-        Credenciales l = new Credenciales();
+        CredencialesLogin l = new CredencialesLogin();
         
         String sql = "SELECT * FROM Credenciales WHERE Username = ? and Contrasenia = ?";
         
