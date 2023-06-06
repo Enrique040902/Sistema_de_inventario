@@ -5,14 +5,13 @@
         <group>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Controlador/HomeControlador.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Vista/Login.java</file>
-            <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Vista/Usuarios.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/CredencialesLogin.java</file>
-            <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/Usuarios.java</file>
+            <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Vista/Usuarios.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/ModeloUsuarios.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/ModeloLogin.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Controlador/LoginControlador.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Vista/Home.java</file>
-            <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/Sistema_inventario.sql</file>
+            <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Modelo/Usuario.java</file>
             <file>file:/C:/Users/dilan/Documents/6%20SEMESTRE/INGENIRÍA%20DE%20SOFTWARE/Proyecto/Sistema_de_inventrario/src/Controlador/UsuariosControlador.java</file>
         </group>
     </open-files>

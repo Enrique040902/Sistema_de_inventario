@@ -30,9 +30,9 @@ public class ModeloLogin {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                l.setId(rs.getInt("ID_usuarios"));
-                l.setUsername(rs.getString("username"));
-                l.setContrasenia(rs.getString("contrasenia"));
+                l.setId(rs.getInt("ID"));
+                l.setUsername(rs.getString("Username"));
+                l.setContrasenia(rs.getString("Contrasenia"));
             }
             
         } catch (SQLException e) {

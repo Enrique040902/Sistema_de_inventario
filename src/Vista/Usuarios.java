@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.UsuariosControlador;
 import Modelo.ModeloUsuarios;
 
-/**
- *
- * @author dilan
- */
 public class Usuarios extends javax.swing.JFrame {
 
     UsuariosControlador ctrlUsuarios;
@@ -21,7 +13,6 @@ public class Usuarios extends javax.swing.JFrame {
         modUsuarios = new ModeloUsuarios();
         ctrlUsuarios = new UsuariosControlador(this, modUsuarios);
         ctrlUsuarios.llenarPrivilegios();
-        btnGuardar.addActionListener(ctrlUsuarios);
     }
 
     /**
@@ -53,7 +44,8 @@ public class Usuarios extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtUsuarios = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
 
         setTitle("Usuarios");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -168,7 +160,12 @@ public class Usuarios extends javax.swing.JFrame {
 
         btnConsultar.setText("Consultar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtUsuarios = new javax.swing.JTable() {
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+        jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -176,7 +173,10 @@ public class Usuarios extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jtUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jtUsuarios);
+
+        btnNuevo.setText("Nuevo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -184,16 +184,18 @@ public class Usuarios extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnNuevo)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEditar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
-                        .addGap(346, 346, 346)
-                        .addComponent(btnConsultar)))
+                        .addGap(256, 256, 256)
+                        .addComponent(btnConsultar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -201,13 +203,14 @@ public class Usuarios extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnGuardar)
                     .addComponent(btnConsultar)
-                    .addComponent(btnEditar))
-                .addGap(70, 70, 70))
+                    .addComponent(btnEditar)
+                    .addComponent(btnNuevo))
+                .addGap(61, 61, 61))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 730, 540));
@@ -253,6 +256,7 @@ public class Usuarios extends javax.swing.JFrame {
     public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -263,8 +267,8 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JComboBox<String> jcbRol;
+    public javax.swing.JTable jtUsuarios;
     public javax.swing.JTextField jtxtApellidoMaterno;
     public javax.swing.JTextField jtxtApellidoPaterno;
     public javax.swing.JTextField jtxtContrasenia;
