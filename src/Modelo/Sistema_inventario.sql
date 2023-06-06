@@ -1,35 +1,35 @@
+DROP DATABASE IF EXISTS sistema_inventario;
 CREATE DATABASE Sistema_inventario;
 USE Sistema_inventario;
 
 CREATE TABLE Usuarios (
-    ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Username VARCHAR(30) NOT NULL,
     
-    PRIMARY KEY (ID, Username)
+    PRIMARY KEY (ID)
 );
 
-ALTER TABLE Usuarios
-ADD UNIQUE INDEX idx_username(Username);
+ALTER TABLE Usuarios ADD UNIQUE idx_username (Username); 
 
 CREATE TABLE Credenciales (
-	ID_usuarios INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ID_usuario INT UNSIGNED NOT NULL,
 	Username VARCHAR(30) NOT NULL,
 	Contrasenia VARCHAR(30) NOT NULL,
-    Privilegio ENUM('Administrador','Empleado') NOT NULL,
+    Privilegio VARCHAR(20) NOT NULL,
     
-	PRIMARY KEY (ID_usuarios, Username),
-    FOREIGN KEY (ID_usuarios) REFERENCES Usuarios (ID),
-    FOREIGN KEY (Username) REFERENCES Usuarios (Username)
+	PRIMARY KEY (ID),
+    FOREIGN KEY (ID_usuario) REFERENCES Usuarios (ID)
 );
 
-
 CREATE TABLE Nombre_Usuario (
-	ID_usuario INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ID_usuario INT UNSIGNED NOT NULL,
     Nombre VARCHAR(30) NOT NULL,
     ApellidoPat VARCHAR(30) NOT NULL,
     ApellidoMat VARCHAR(30) NOT NULL,
     
-    PRIMARY KEY (ID_Usuario),
+    PRIMARY KEY (ID),
     FOREIGN KEY (ID_usuario) REFERENCES Usuarios(ID)
 );
 
@@ -42,8 +42,6 @@ CREATE TABLE Proveedores (
     PRIMARY KEY (ID)
 );
 
-ALTER TABLE Proveedores ADD FOREIGN KEY (ID_direccion) REFERENCES Direccion_proveedores (ID);
-
 CREATE TABLE Direccion_proveedores (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     Nombre_calle VARCHAR(30) NOT NULL,
@@ -54,6 +52,8 @@ CREATE TABLE Direccion_proveedores (
     
     PRIMARY KEY (ID)
 );
+
+ALTER TABLE Proveedores ADD FOREIGN KEY (ID_direccion) REFERENCES Direccion_proveedores (ID);
 
 CREATE TABLE Productos (
 	ID VARCHAR(80) NOT NULL,
@@ -70,14 +70,14 @@ CREATE TABLE Productos (
     FOREIGN KEY (ID_proveedor) REFERENCES Proveedores(ID)
 );
 
-ALTER TABLE Productos ADD foreign key (ID_departamento) references Departamentos (ID);
-
 CREATE TABLE Departamentos (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     Nombre_departamento VARCHAR(30) NOT NULL,
     
     PRIMARY KEY (ID)
 );
+
+ALTER TABLE Productos ADD foreign key (ID_departamento) references Departamentos (ID);
 
 CREATE TABLE Salidas (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE Salidas (
     foreign key (ID_proveedor) references Proveedores (ID)
 );
 
-ALTER TABLE Salidas ADD foreign key (ID_cliente) references Clientes (ID);
+
 
 CREATE TABLE Entradas (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -113,7 +113,9 @@ CREATE TABLE Clientes (
     PRIMARY KEY (ID)
 );
 
-ALTER TABLE Clientes add foreign key (ID_direccionC) references Direccion_cliente (ID);
+ALTER TABLE Salidas ADD foreign key (ID_cliente) references Clientes (ID);
+
+
 
 CREATE TABLE Direccion_cliente (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -124,7 +126,13 @@ CREATE TABLE Direccion_cliente (
     PRIMARY KEY (ID)
 );
 
+ALTER TABLE Clientes add foreign key (ID_direccionC) references Direccion_cliente (ID);
+
 -- Inserción de datos del administrador.
 insert into Usuarios(Username) values('admin');
-insert into Credenciales(username, contrasenia, privilegio) values ('admin', 'admin', 'Administrador');
+insert into Credenciales(ID_usuario, username, contrasenia, privilegio) values (last_insert_id(), 'admin', 'admin', 'Administrador');
+insert into Nombre_usuario(ID_usuario, Nombre, ApellidoPat, ApellidoMat) values (last_insert_id(), 'Dilan', 'Sanchez', 'Morales');
+
+insert into Usuarios(Username) values('usuario1');
+insert into Credenciales(username, contrasenia, privilegio) values ('usuario3', '123', 'Empleado');
 insert into Nombre_usuario(Nombre, ApellidoPat, ApellidoMat) values ('Dilan', 'Sanchez', 'Morales');
