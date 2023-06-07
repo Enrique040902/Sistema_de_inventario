@@ -16,7 +16,7 @@ public class LoginControlador implements ActionListener {
 
     private final Login frmLogin;
     private final ModeloLogin modLogin;
-    private CredencialesLogin credencial;
+    private CredencialesLogin credencial = new CredencialesLogin();
 
     public LoginControlador(Login login, ModeloLogin modLogin) {
 
@@ -42,10 +42,11 @@ public class LoginControlador implements ActionListener {
         String contrasenia = String.valueOf(frmLogin.txtPassword.getPassword());
 
         if (!"".equals(username) || !"".equals(contrasenia)) {
+            
+            credencial.setUsername(username);
+            credencial.setContrasenia(contrasenia);
 
-            credencial = modLogin.log(username, contrasenia);
-
-            if (credencial.getUsername() != null || credencial.getContrasenia() != null) {
+            if (modLogin.log(credencial)) {
 
                 Home home = new Home();
                 home.setVisible(true);

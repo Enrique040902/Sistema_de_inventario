@@ -73,7 +73,7 @@ public class ModeloUsuarios {
 
             // Bloque de texto que hace la consulta a las tablas Nombre_usuario, Usuarios y Credenciales
             String sql = """
-                     SELECT U.id, N.nombre, N.apellidoPat, N.apellidoMat, U.username, C.privilegio
+                     SELECT U.id, N.nombre, N.apellidoPat, N.apellidoMat, U.username,C.contrasenia, C.privilegio
                      FROM nombre_usuario N
                      JOIN usuarios U ON U.id = N.id_usuario
                      JOIN Credenciales C ON U.id = C.id_usuario;

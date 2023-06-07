@@ -107,13 +107,14 @@ public class UsuariosControlador implements ActionListener {
         modTablaUsuarios.addColumn("Apellido pat.");
         modTablaUsuarios.addColumn("Apellido mat.");
         modTablaUsuarios.addColumn("Username");
+        modTablaUsuarios.addColumn("Contraseña");
         modTablaUsuarios.addColumn("Rol");
 
         frmUsuarios.jtUsuarios.setModel(modTablaUsuarios);
 
         ResultSet rs = modUsuarios.consultarUsuarios();
 
-        String[] datos = new String[6];
+        String[] datos = new String[7];
 
         try {
 
@@ -124,6 +125,7 @@ public class UsuariosControlador implements ActionListener {
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
                 modTablaUsuarios.addRow(datos);
 
             }
@@ -138,12 +140,11 @@ public class UsuariosControlador implements ActionListener {
     // Método eliminar registro
     private void eliminarUsuario() {
         int fila = frmUsuarios.jtUsuarios.getSelectedRow();
-        
 
         if (fila >= 0) {
-            
+
             String valor = frmUsuarios.jtUsuarios.getValueAt(fila, 0).toString();
-            
+
             try {
                 modUsuarios.elimiarRegistro(valor);
                 JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -163,12 +164,13 @@ public class UsuariosControlador implements ActionListener {
 
         if (fila >= 0) {
 
-            String rol = frmUsuarios.jtUsuarios.getValueAt(fila, 5).toString();
+            String rol = frmUsuarios.jtUsuarios.getValueAt(fila, 6).toString();
 
             frmUsuarios.jtxtNombre.setText(frmUsuarios.jtUsuarios.getValueAt(fila, 1).toString());
             frmUsuarios.jtxtApellidoPaterno.setText(frmUsuarios.jtUsuarios.getValueAt(fila, 2).toString());
             frmUsuarios.jtxtApellidoMaterno.setText(frmUsuarios.jtUsuarios.getValueAt(fila, 3).toString());
             frmUsuarios.jtxtNombreUsuario.setText(frmUsuarios.jtUsuarios.getValueAt(fila, 4).toString());
+            frmUsuarios.jtxtContrasenia.setText(frmUsuarios.jtUsuarios.getValueAt(fila, 5).toString());
 
             frmUsuarios.jcbRol.setSelectedItem(rol);
         } else {
@@ -193,11 +195,16 @@ public class UsuariosControlador implements ActionListener {
 
         String rol = frmUsuarios.jcbRol.getSelectedItem().toString();
 
-        modUsuarios.actualizarRegistro(frmUsuarios.jtxtNombreUsuario.getText(), rol, frmUsuarios.jtxtNombre.getText(), frmUsuarios.jtxtContrasenia.getText(), frmUsuarios.jtxtApellidoPaterno.getText(), frmUsuarios.jtxtApellidoMaterno.getText());
-        listarUsuarios();
-        limpiarCeldas();
+        if ("".equals(frmUsuarios.jtxtNombreUsuario.getText()) || "".equals(rol) || "".equals(frmUsuarios.jtxtNombre.getText()) || "".equals(frmUsuarios.jtxtContrasenia.getText()) || "".equals(frmUsuarios.jtxtApellidoPaterno.getText()) || "".equals(frmUsuarios.jtxtApellidoMaterno.getText())) {
 
-        JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Llene los campos a actualizar", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            modUsuarios.actualizarRegistro(frmUsuarios.jtxtNombreUsuario.getText(), rol, frmUsuarios.jtxtNombre.getText(), frmUsuarios.jtxtContrasenia.getText(), frmUsuarios.jtxtApellidoPaterno.getText(), frmUsuarios.jtxtApellidoMaterno.getText());
+            listarUsuarios();
+            limpiarCeldas();
+
+            JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
 }
