@@ -48,7 +48,6 @@ CREATE TABLE Direccion_proveedores (
     Numero_calle VARCHAR(30),
     Codigo_postal VARCHAR(30) NOT NULL,
     Estado VARCHAR(30) NOT NULL,
-    ID_proveedor INT UNSIGNED NOT NULL,
     
     PRIMARY KEY (ID)
 );
