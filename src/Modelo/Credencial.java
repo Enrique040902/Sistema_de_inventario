@@ -8,7 +8,7 @@ package Modelo;
 /*
 La clase credenciales es la que importa a lo hora de ingresar al sistema
 */
-public class CredencialesLogin {
+public class Credencial {
     
     // Se crean atributos de la tabla Credenciales
     private int id;
@@ -16,11 +16,11 @@ public class CredencialesLogin {
     private String contrasenia;
     private String privilegio;
 
-    public CredencialesLogin() {
+    public Credencial() {
         
     }
     
-    public CredencialesLogin(int id, String username, String contrasenia, String privilegio) {
+    public Credencial(int id, String username, String contrasenia, String privilegio) {
         this.id = id;
         this.username = username;
         this.contrasenia = contrasenia;

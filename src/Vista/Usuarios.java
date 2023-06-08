@@ -10,6 +10,8 @@ public class Usuarios extends javax.swing.JFrame {
     
     public Usuarios() {
         initComponents();
+        
+        
         modUsuarios = new ModeloUsuarios();
         ctrlUsuarios = new UsuariosControlador(this, modUsuarios);
         ctrlUsuarios.llenarPrivilegios();
@@ -52,6 +54,7 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(154, 226, 249));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1042, 540));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -203,7 +206,7 @@ public class Usuarios extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnGuardar)

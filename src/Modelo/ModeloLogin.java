@@ -13,7 +13,7 @@ public class ModeloLogin {
     ResultSet rs;
     ConexionBD cn = new ConexionBD();
 
-    public boolean log(CredencialesLogin usuario) {
+    public boolean log(Credencial usuario) {
 
         String sql = "SELECT ID_usuario, Username, Contrasenia, Privilegio FROM Credenciales WHERE Username = ?";
 

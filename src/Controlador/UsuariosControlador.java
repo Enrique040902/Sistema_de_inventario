@@ -71,7 +71,7 @@ public class UsuariosControlador implements ActionListener {
         if ("".equals(frmUsuarios.jtxtNombreUsuario.getText()) || "".equals(frmUsuarios.jtxtNombre.getText()) || "".equals(frmUsuarios.jtxtApellidoPaterno.getText())
                 || "".equals(frmUsuarios.jtxtApellidoMaterno.getText()) || "".equals(frmUsuarios.jtxtContrasenia.getText()) || "".equals(frmUsuarios.jcbRol.getSelectedItem().toString())) {
 
-            JOptionPane.showMessageDialog(null, "Llene los campos correcpondientes", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Llene los campos correspondientes", "Advertencia", JOptionPane.WARNING_MESSAGE);
 
         } else {
 
@@ -147,7 +147,7 @@ public class UsuariosControlador implements ActionListener {
 
             try {
                 modUsuarios.elimiarRegistro(valor);
-                JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Información", JOptionPane.WARNING_MESSAGE);
                 listarUsuarios();
             } catch (Exception e) {
                 System.out.println(e.toString());

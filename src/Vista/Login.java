@@ -10,9 +10,10 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
         
         loginControlador = new LoginControlador(this, modLogin);
-        loginControlador.iniciarLogin();
     }
 
     /**

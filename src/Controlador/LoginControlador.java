@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.CredencialesLogin;
+import Modelo.Credencial;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.Login;
@@ -16,7 +16,7 @@ public class LoginControlador implements ActionListener {
 
     private final Login frmLogin;
     private final ModeloLogin modLogin;
-    private CredencialesLogin credencial = new CredencialesLogin();
+    private Credencial credencial = new Credencial();
 
     public LoginControlador(Login login, ModeloLogin modLogin) {
 
@@ -24,12 +24,6 @@ public class LoginControlador implements ActionListener {
         this.modLogin = modLogin;
         this.frmLogin.btnEntrar.addActionListener(this);
 
-    }
-
-    // Método que inicia el frame
-    public void iniciarLogin() {
-        frmLogin.setTitle("Login");
-        frmLogin.setLocationRelativeTo(null);
     }
 
     @Override

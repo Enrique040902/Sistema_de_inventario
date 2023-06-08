@@ -8,15 +8,15 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Sistema
      */
     
-    HomeControlador homeContralador;
+    HomeControlador homeControlador;
+    Usuarios frmUsuarios;
     
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(Home.MAXIMIZED_BOTH);
         
-        homeContralador = new HomeControlador();
-        jmiUsuarios.addActionListener(homeContralador);
+        homeControlador = new HomeControlador(frmUsuarios, this);
     }
 
     /**
@@ -54,8 +54,9 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
-        setMinimumSize(new java.awt.Dimension(1040, 540));
-        setPreferredSize(new java.awt.Dimension(1040, 540));
+        setMinimumSize(new java.awt.Dimension(1040, 566));
+        setPreferredSize(new java.awt.Dimension(1040, 566));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jMenuBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -94,18 +95,7 @@ public class Home extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1034, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-        );
-
-        pack();
+        setBounds(0, 0, 1056, 574);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

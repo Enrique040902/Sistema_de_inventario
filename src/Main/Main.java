@@ -13,14 +13,13 @@ import Vista.Usuarios;
 public class Main {
     public static void main(String[] args) {
         
-        ModeloLogin modLogin = new ModeloLogin();
-        Login login = new Login();
-        
-        Usuarios usuarios = new Usuarios();
-        
-        // Inicia la vista de Login
-        LoginControlador loginControlador = new LoginControlador(login, modLogin);
-        loginControlador.iniciarLogin();
-        login.setVisible(true);
+//        ModeloLogin modLogin = new ModeloLogin();
+//        Login login = new Login();
+//        
+//        Usuarios usuarios = new Usuarios();
+//        
+//        // Inicia la vista de Login
+//        LoginControlador loginControlador = new LoginControlador(login, modLogin);
+//        login.setVisible(true);
     }
 }

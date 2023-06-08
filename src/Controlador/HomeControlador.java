@@ -3,25 +3,98 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Vista.Usuarios;
+import Vista.*;
+import javax.swing.JFrame;
 
-/**
- *
- * @author dilan
- */
 public class HomeControlador implements ActionListener {
 
-    Usuarios usuariosFrame = new Usuarios();
+    Usuarios frmUsuarios;
+    Clientes frmClientes;
+    Productos frmProductos;
+    Proveedores frmProveedores;
+    Entradas frmEntradas;
+    Salidas frmSalidas;
     
+    Home frmHome;
+    private JFrame frmAbierto;
+
+    public HomeControlador(Usuarios frmUsuarios, Home frmHome) {
+
+        this.frmUsuarios = frmUsuarios;
+        this.frmHome = frmHome;
+
+        frmHome.jmiUsuarios.addActionListener(this);
+        frmHome.jmiClientes.addActionListener(this);
+        frmHome.jmiProductos.addActionListener(this);
+        frmHome.jmiProveedores.addActionListener(this);
+        frmHome.jmiEntradas.addActionListener(this);
+        frmHome.jmiSalidas.addActionListener(this);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if ("Usuarios".equals(e.getActionCommand())) {
-
-            if (!usuariosFrame.isVisible()) {
-                usuariosFrame.setLocationRelativeTo(null);
-                usuariosFrame.setVisible(true);
+        if (e.getSource() == frmHome.jmiUsuarios) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmUsuarios = new Usuarios();
+                abrirFrame(frmUsuarios);
             }
+            
+        } else if (e.getSource() == frmHome.jmiClientes) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmClientes = new Clientes();
+                abrirFrame(frmClientes);
+            }
+            
+        } else if (e.getSource() == frmHome.jmiProductos) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmProductos = new Productos();
+                abrirFrame(frmProductos);
+            }
+            
+        } else if (e.getSource() == frmHome.jmiProveedores) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmProveedores = new Proveedores();
+                abrirFrame(frmProveedores);
+            }
+            
+        } else if (e.getSource() == frmHome.jmiEntradas) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmEntradas = new Entradas();
+                abrirFrame(frmEntradas);
+            }
+            
+        } else if (e.getSource() == frmHome.jmiSalidas) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmSalidas = new Salidas();
+                abrirFrame(frmSalidas);
+            }
+            
+        }
+
+    }
+    
+    private void abrirFrame(JFrame frm) {
+        
+        frmAbierto = frm;
+        if (frmAbierto == null || !frm.isVisible() || frm != frmAbierto) {
+            restringirFrameExtras(frmAbierto);
+        }
+        
+    }
+    
+    private void restringirFrameExtras(JFrame frm) {
+
+        if (!frm.isVisible()) {
+            frm.setLocationRelativeTo(null);
+            frm.setVisible(true);
         }
 
     }
