@@ -2,19 +2,19 @@ package Modelo;
 
 import java.sql.Date;
 
-public class Entrada {
+public class Salida {
     
     private int id;
-    private Date Fecha;
     private int cantidadProducto;
+    private Date fecha;
 
-    public Entrada(int id, Date Fecha, int cantidadProducto) {
+    public Salida(int id, int cantidadProducto, Date fecha) {
         this.id = id;
-        this.Fecha = Fecha;
         this.cantidadProducto = cantidadProducto;
+        this.fecha = fecha;
     }
 
-    public Entrada() {
+    public Salida() {
     }
 
     public int getId() {
@@ -24,14 +24,6 @@ public class Entrada {
     public void setId(int id) {
         this.id = id;
     }
-    
-    public Date getFecha() {
-        return Fecha;
-    }
-
-    public void setFecha(Date Fecha) {
-        this.Fecha = Fecha;
-    }
 
     public int getCantidadProducto() {
         return cantidadProducto;
@@ -40,7 +32,14 @@ public class Entrada {
     public void setCantidadProducto(int cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
     }
-    
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
     
     
     

@@ -47,28 +47,27 @@ public class EntradasControlador implements ActionListener {
 
     }
 
-    public void llenarProveedores() {
-        modEntrada.consultarProveedores(frmEntradas.jcbProveedor);
-    }
-
     private void registrar() {
 
-        String proveedor = frmEntradas.jcbProveedor.getSelectedItem().toString();
         String cantidad = frmEntradas.jtxtCantidad.getText();
         String fecha = ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText();
 
         // Se valida si los campos estan vacios
-        if ("".equals(proveedor) || "".equals(cantidad) || "".equals(fecha)) {
+        if ("".equals(cantidad) || "".equals(fecha)) {
 
             JOptionPane.showMessageDialog(frmEntradas, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
+        } else if (!cantidad.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmEntradas, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
         } else {
 
-            entrada = modEntrada.registrarEntrada(proveedor, Integer.parseInt(cantidad), Date.valueOf(fecha));
+            entrada = modEntrada.registrarEntrada(Integer.parseInt(cantidad), Date.valueOf(fecha));
             listarEntradas();
             limpiarCeldas();
 
-            if (entrada.getCantidadProducto() != 0 || entrada.getFecha() != null || entrada.getIdProveedor() != 0) {
+            if (entrada.getCantidadProducto() != 0 || entrada.getFecha() != null) {
                 JOptionPane.showMessageDialog(frmEntradas, "Entrada registrada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -83,7 +82,6 @@ public class EntradasControlador implements ActionListener {
         modTablaEntradas.setColumnCount(0);
 
         modTablaEntradas.addColumn("Id entrada");
-        modTablaEntradas.addColumn("Proveedor");
         modTablaEntradas.addColumn("Fecha");
         modTablaEntradas.addColumn("Cantidad de producto");
 
@@ -91,7 +89,7 @@ public class EntradasControlador implements ActionListener {
 
         ResultSet rs = modEntrada.consultarEntrada();
 
-        String[] datos = new String[4];
+        String[] datos = new String[3];
 
         try {
 
@@ -99,7 +97,6 @@ public class EntradasControlador implements ActionListener {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
                 modTablaEntradas.addRow(datos);
 
             }
@@ -120,8 +117,8 @@ public class EntradasControlador implements ActionListener {
 
             try {
                 modEntrada.elimiarRegistro(valor);
-                JOptionPane.showMessageDialog(null, "Entrada eliminada correctamente", "Información", JOptionPane.WARNING_MESSAGE);
                 listarEntradas();
+                JOptionPane.showMessageDialog(null, "Entrada eliminada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
@@ -136,13 +133,8 @@ public class EntradasControlador implements ActionListener {
         int fila = frmEntradas.jtEntradas.getSelectedRow();
 
         if (fila >= 0) {
-
-            String proveedor = frmEntradas.jtEntradas.getValueAt(fila, 1).toString();
-
-            frmEntradas.jcbProveedor.setSelectedItem(proveedor);
-
+            ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).setText(frmEntradas.jtEntradas.getValueAt(fila, 1).toString());
             frmEntradas.jtxtCantidad.setText(frmEntradas.jtEntradas.getValueAt(fila, 2).toString());
-            ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).setText(frmEntradas.jtEntradas.getValueAt(fila, 3).toString());
 
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una fila, por favor", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -153,7 +145,6 @@ public class EntradasControlador implements ActionListener {
     // Método para limpar las celdas
     private void limpiarCeldas() {
 
-        frmEntradas.jcbProveedor.setSelectedIndex(0);
         frmEntradas.jtxtCantidad.setText("");
         ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).setText("");
 
@@ -161,14 +152,12 @@ public class EntradasControlador implements ActionListener {
 
     private void actualizarEntrada() {
 
-        String proveedor = frmEntradas.jcbProveedor.getSelectedItem().toString();
-
-        if ("".equals(frmEntradas.jtxtCantidad.getText()) || "".equals(proveedor) || "".equals(((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText())) {
+        if ("".equals(frmEntradas.jtxtCantidad.getText()) || "".equals(((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText())) {
 
             JOptionPane.showMessageDialog(null, "Llene los campos a actualizar", "Aviso", JOptionPane.WARNING_MESSAGE);
         } else {
             String fecha = ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText();
-            modEntrada.actualizarRegistro(Integer.parseInt(frmEntradas.jtxtCantidad.getText()), proveedor, Date.valueOf(fecha));
+            modEntrada.actualizarRegistro(Integer.parseInt(frmEntradas.jtxtCantidad.getText()), Date.valueOf(fecha));
             listarEntradas();
             limpiarCeldas();
 

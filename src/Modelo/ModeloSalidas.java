@@ -2,46 +2,46 @@ package Modelo;
 
 import java.sql.*;
 
-public class ModeloEntrada {
-    
+public class ModeloSalidas {
+
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     ConexionBD cn = new ConexionBD();
-    
-    Entrada entrada = new Entrada();
-    
-    public Entrada registrarEntrada(int cantidad, Date fecha) {
+
+    Salida salida = new Salida();
+
+    public Salida registrarSalida(int cantidad, Date fecha) {
 
         // guardamos lo valores en los setters de la clase Usuario
-        entrada.setCantidadProducto(cantidad);
-        entrada.setFecha(fecha);
+        salida.setCantidadProducto(cantidad);
+        salida.setFecha(fecha);
 
         try {
-            
-            String sqlEntradas = "INSERT INTO Entradas (Fecha, Cantidad_producto) VALUES (?,?)";
+
+            String sqlEntradas = "INSERT INTO Salidas (Fecha, Cantidad_producto) VALUES (?,?)";
 
             con = cn.getConnection();
-            
+
             ps = con.prepareStatement(sqlEntradas);
 
-            ps.setDate(1, entrada.getFecha());
-            ps.setInt(2, entrada.getCantidadProducto());
+            ps.setDate(1, salida.getFecha());
+            ps.setInt(2, salida.getCantidadProducto());
             ps.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
 
-        return entrada;
+        return salida;
     }
     
-    public ResultSet consultarEntrada() {
+    public ResultSet consultarSalida() {
 
         try {
 
             String sql = """
-                     SELECT * FROM Entradas;
+                     SELECT * FROM Salidas;
                      """;
 
             con = cn.getConnection();
@@ -55,10 +55,10 @@ public class ModeloEntrada {
         return rs;
     }
     
-     public void elimiarRegistro(String valor) {
+    public void elimiarRegistro(String valor) {
 
         // setencias que eliminan los valores.
-        String sql = "DELETE FROM Entradas WHERE id = " + valor + ";";
+        String sql = "DELETE FROM Salidas WHERE id = " + valor + ";";
 
         try {
 
@@ -76,34 +76,34 @@ public class ModeloEntrada {
         }
 
     }
-     
-     public void actualizarRegistro(int cantidad, Date fecha) {
+    
+    public void actualizarSalida(int cantidad, Date fecha) {
 
         // se guardan los datos de los parametros
-        entrada.setCantidadProducto(cantidad);
-        entrada.setFecha(fecha);
+        salida.setCantidadProducto(cantidad);
+        salida.setFecha(fecha);
 
         try {
 
             // Se hace una consulta para saber el id del usuario y poder actualizar los datos
-            String sqlIdEntrada = "SELECT ID FROM Entradas";
+            String sqlIdSalida = "SELECT ID FROM Salidas";
             
-            String sqlEntradas = "UPDATE Entradas SET fecha = ?, Cantidad_producto = ?  WHERE id = ?;";
+            String sqlSalida = "UPDATE Salidas SET fecha = ?, Cantidad_producto = ?  WHERE id = ?;";
 
             con = cn.getConnection();
 
             // Obtener el id para actualizar los datos.
-            ps = con.prepareStatement(sqlIdEntrada);
+            ps = con.prepareStatement(sqlIdSalida);
             
             rs = ps.executeQuery();
             if (rs.next()) {
-                entrada.setId(rs.getInt("ID")); // se guarda en setId() y usarlo para las demas sentencias SQL
+                salida.setId(rs.getInt("ID")); // se guarda en setId() y usarlo para las demas sentencias SQL
             }
 
-            ps = con.prepareStatement(sqlEntradas);
-            ps.setDate(1, entrada.getFecha());
-            ps.setInt(2, entrada.getCantidadProducto());
-            ps.setInt(3, entrada.getId());
+            ps = con.prepareStatement(sqlSalida);
+            ps.setDate(1, salida.getFecha());
+            ps.setInt(2, salida.getCantidadProducto());
+            ps.setInt(3, salida.getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -116,5 +116,5 @@ public class ModeloEntrada {
             }
         }
     }
-    
+
 }

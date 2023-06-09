@@ -78,25 +78,21 @@ CREATE TABLE Departamentos (
 
 ALTER TABLE Productos ADD foreign key (ID_departamento) references Departamentos (ID);
 
+
 CREATE TABLE Salidas (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
-    ID_proveedor INT UNSIGNED NOT NULL,
-    ID_cliente INT UNSIGNED NOT NULL,
     Fecha DATE NOT NULL, 
     Cantidad_producto INT NOT NULL,
     
-    PRIMARY KEY (ID),
-    foreign key (ID_proveedor) references Proveedores (ID)
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE Entradas (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
-    ID_proveedor INT UNSIGNED NOT NULL,
     Fecha DATE NOT NULL, 
     Cantidad_producto DOUBLE NOT NULL,
     
-    PRIMARY KEY (ID),
-    foreign key (ID_proveedor) references Proveedores (ID)
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE Clientes (
