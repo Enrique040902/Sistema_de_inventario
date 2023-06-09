@@ -89,18 +89,14 @@ CREATE TABLE Salidas (
     foreign key (ID_proveedor) references Proveedores (ID)
 );
 
-
-
 CREATE TABLE Entradas (
 	ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     ID_proveedor INT UNSIGNED NOT NULL,
-    ID_producto VARCHAR(30) NOT NULL,
     Fecha DATE NOT NULL, 
     Cantidad_producto INT NOT NULL,
     
     PRIMARY KEY (ID),
-    foreign key (ID_proveedor) references Proveedores (ID),
-    foreign key (ID_producto) references Productos (ID)
+    foreign key (ID_proveedor) references Proveedores (ID)
 );
 
 CREATE TABLE Clientes (
