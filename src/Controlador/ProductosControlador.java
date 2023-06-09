@@ -75,7 +75,11 @@ public class ProductosControlador implements ActionListener {
 
             JOptionPane.showMessageDialog(frmProductos, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
-        } else {
+        } else if (!stock.matches("\\d+") || !precioCompra.matches("\\d+") || !precioVenta.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmProductos, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        }else {
 
             if (!departamentoSeleccionado) {
 

@@ -60,7 +60,11 @@ public class ProveedoresControlador implements ActionListener {
                 || codigoPostal.equals("") || estado.equals("")) {
             JOptionPane.showMessageDialog(frmProveedores, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
-        } else {
+        } else if (!telefono.matches("\\d+") || !codigoPostal.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmProveedores, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        }else {
 
             if (modProveedores.comprobarExistencia(nombreProveedor) == 0) {
                 proveedor = modProveedores.registrarCliente(nombreProveedor, telefono, nombreCalle, numeroCalle, codigoPostal, estado);

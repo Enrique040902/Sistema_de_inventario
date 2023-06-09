@@ -2,6 +2,7 @@ package Vista;
 
 import javax.swing.ScrollPaneConstants;
 import Controlador.ProductosControlador;
+import Modelo.Credencial;
 
 public class Productos extends javax.swing.JFrame {
     
@@ -14,6 +15,22 @@ public class Productos extends javax.swing.JFrame {
         
         jScrollPane3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
+    
+    public Productos(Credencial credencial) {
+        initComponents();
+        crtlProductos = new ProductosControlador(this);
+        crtlProductos.llenarProveedoresYDepartamentos();
+        
+        jScrollPane3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            btnNuevo.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnEditar.setEnabled(false);
+            btnGuardar.setEnabled(false);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

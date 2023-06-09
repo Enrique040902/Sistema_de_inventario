@@ -42,10 +42,10 @@ public class LoginControlador implements ActionListener {
 
             if (modLogin.log(credencial)) {
 
-                Home home = new Home();
+                Home home = new Home(credencial);
                 home.setVisible(true);
                 frmLogin.dispose();
-
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
             }

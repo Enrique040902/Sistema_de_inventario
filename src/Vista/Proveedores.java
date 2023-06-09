@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.ProveedoresControlador;
+import Modelo.Credencial;
 
 public class Proveedores extends javax.swing.JFrame {
 
@@ -10,6 +11,18 @@ public class Proveedores extends javax.swing.JFrame {
         initComponents();
         
         ctrlProveedores = new ProveedoresControlador(this);
+    }
+    
+    public Proveedores(Credencial credencial) {
+        initComponents();
+        ctrlProveedores = new ProveedoresControlador(this);
+        
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            btnNuevo.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnEditar.setEnabled(false);
+            btnGuardar.setEnabled(false);
+        }
     }
 
     /**

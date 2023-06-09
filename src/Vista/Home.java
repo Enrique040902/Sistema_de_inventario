@@ -1,22 +1,34 @@
 package Vista;
 
 import Controlador.HomeControlador;
+import Modelo.Credencial;
 
 public class Home extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Sistema
-     */
     
     HomeControlador homeControlador;
-    Usuarios frmUsuarios;
+    Credencial credencial;
     
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(Home.MAXIMIZED_BOTH);
         
-        homeControlador = new HomeControlador(frmUsuarios, this);
+        homeControlador = new HomeControlador(this);
+    }
+    
+    public Home(Credencial credencial) {
+        
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setExtendedState(Home.MAXIMIZED_BOTH);
+        this.credencial = credencial;
+        
+        homeControlador = new HomeControlador(this, credencial);
+        
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            jmAdminitracion.setVisible(false);
+        }
+        jLabel1.setText("Usuario: " + credencial.getUsername());
     }
 
     /**
@@ -29,11 +41,11 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jmAdminitracion = new javax.swing.JMenu();
         jmiUsuarios = new javax.swing.JMenuItem();
         jmiDepa = new javax.swing.JMenuItem();
-        jmiSalir = new javax.swing.JMenuItem();
         jmHerramientas = new javax.swing.JMenu();
         jmiClientes = new javax.swing.JMenuItem();
         jmiProductos = new javax.swing.JMenuItem();
@@ -59,6 +71,10 @@ public class Home extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1040, 566));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 190, 30));
+
         jMenuBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jmAdminitracion.setText("Administración");
@@ -68,9 +84,6 @@ public class Home extends javax.swing.JFrame {
 
         jmiDepa.setText("Departamentos");
         jmAdminitracion.add(jmiDepa);
-
-        jmiSalir.setText("Salir");
-        jmAdminitracion.add(jmiSalir);
 
         jMenuBar.add(jmAdminitracion);
 
@@ -107,6 +120,7 @@ public class Home extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu jmAdminitracion;
@@ -118,7 +132,6 @@ public class Home extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmiProductos;
     public javax.swing.JMenuItem jmiProveedores;
     public javax.swing.JMenuItem jmiSalidas;
-    public javax.swing.JMenuItem jmiSalir;
     public javax.swing.JMenuItem jmiUsuarios;
     // End of variables declaration//GEN-END:variables
 }

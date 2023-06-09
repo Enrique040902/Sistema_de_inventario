@@ -1,15 +1,28 @@
 package Vista;
 
 import Controlador.ClientesControlador;
+import Modelo.Credencial;
 
 public class Clientes extends javax.swing.JFrame {
-
-    ClientesControlador ctrlClientes;
     
+    ClientesControlador ctrlClientes;
+
     public Clientes() {
         initComponents();
-        
+
         ctrlClientes = new ClientesControlador(this);
+    }
+    
+    public Clientes(Credencial credencial) {
+        initComponents();
+
+        ctrlClientes = new ClientesControlador(this);
+        
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            btnNuevo.setEnabled(false);
+            btnEliminar.setEnabled(false);
+        }
+        
     }
 
     /**

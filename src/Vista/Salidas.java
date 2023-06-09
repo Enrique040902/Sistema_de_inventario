@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.SalidasControlador;
+import Modelo.Credencial;
 
 public class Salidas extends javax.swing.JFrame {
 
@@ -10,6 +11,18 @@ public class Salidas extends javax.swing.JFrame {
         initComponents();
         
         crtlSalidas = new SalidasControlador(this);
+    }
+    
+    public Salidas(Credencial credencial) {
+        initComponents();
+        crtlSalidas = new SalidasControlador(this);
+        
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            btnNuevo.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnEditar.setEnabled(false);
+            btnGuardar.setEnabled(false);
+        }
     }
 
     /**

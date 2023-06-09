@@ -14,20 +14,23 @@ import javax.swing.table.DefaultTableModel;
 public class ClientesControlador implements ActionListener {
 
     Clientes frmClientes;
-    Cliente cliente = new Cliente();
-    ModeloClientes modCliente = new ModeloClientes();
+    Cliente cliente;
+    ModeloClientes modCliente;
 
     DefaultTableModel modTablaClientes = new DefaultTableModel();
 
     public ClientesControlador(Clientes frmClientes) {
 
         this.frmClientes = frmClientes;
+        this.cliente = new Cliente();
+        this.modCliente = new ModeloClientes();
 
         frmClientes.btnNuevo.addActionListener(this);
         frmClientes.btnGuardar.addActionListener(this);
         frmClientes.btnEliminar.addActionListener(this);
         frmClientes.btnEditar.addActionListener(this);
         frmClientes.btnConsultar.addActionListener(this);
+        
 
     }
 
@@ -61,6 +64,10 @@ public class ClientesControlador implements ActionListener {
                 || numeroCalle.equals("") || estado.equals("")) {
 
             JOptionPane.showMessageDialog(frmClientes, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        } else if (!telefono.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmClientes, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
         } else {
 

@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.EntradasControlador;
+import Modelo.Credencial;
 
 public class Entradas extends javax.swing.JFrame {
 
@@ -11,6 +12,18 @@ public class Entradas extends javax.swing.JFrame {
         initComponents();
         
         crtlEntradas = new EntradasControlador(this);
+    }
+    
+    public Entradas(Credencial credencial) {
+        initComponents();
+        
+        crtlEntradas = new EntradasControlador(this);
+        if (credencial.getPrivilegio().equals("Empleado")) {
+            btnNuevo.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnEditar.setEnabled(false);
+            btnGuardar.setEnabled(false);
+        }
     }
 
     /**
