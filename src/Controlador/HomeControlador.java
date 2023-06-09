@@ -14,6 +14,7 @@ public class HomeControlador implements ActionListener {
     Proveedores frmProveedores;
     Entradas frmEntradas;
     Salidas frmSalidas;
+    Departamentos frmDepartamentos;
     
     Home frmHome;
     private JFrame frmAbierto;
@@ -29,6 +30,7 @@ public class HomeControlador implements ActionListener {
         frmHome.jmiProveedores.addActionListener(this);
         frmHome.jmiEntradas.addActionListener(this);
         frmHome.jmiSalidas.addActionListener(this);
+        frmHome.jmiDepa.addActionListener(this);
 
     }
 
@@ -75,6 +77,13 @@ public class HomeControlador implements ActionListener {
             if (frmAbierto == null || !frmAbierto.isVisible()) {
                 frmSalidas = new Salidas();
                 abrirFrame(frmSalidas);
+            }
+            
+        } else if (e.getSource() == frmHome.jmiDepa) {
+            
+            if (frmAbierto == null || !frmAbierto.isVisible()) {
+                frmDepartamentos = new Departamentos();
+                abrirFrame(frmDepartamentos);
             }
             
         }

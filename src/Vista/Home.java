@@ -32,6 +32,7 @@ public class Home extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jmAdminitracion = new javax.swing.JMenu();
         jmiUsuarios = new javax.swing.JMenuItem();
+        jmiDepa = new javax.swing.JMenuItem();
         jmiSalir = new javax.swing.JMenuItem();
         jmHerramientas = new javax.swing.JMenu();
         jmiClientes = new javax.swing.JMenuItem();
@@ -64,6 +65,9 @@ public class Home extends javax.swing.JFrame {
 
         jmiUsuarios.setText("Usuarios");
         jmAdminitracion.add(jmiUsuarios);
+
+        jmiDepa.setText("Departamentos");
+        jmAdminitracion.add(jmiDepa);
 
         jmiSalir.setText("Salir");
         jmAdminitracion.add(jmiSalir);
@@ -109,6 +113,7 @@ public class Home extends javax.swing.JFrame {
     public javax.swing.JMenu jmEntradasSalidas;
     private javax.swing.JMenu jmHerramientas;
     public javax.swing.JMenuItem jmiClientes;
+    public javax.swing.JMenuItem jmiDepa;
     public javax.swing.JMenuItem jmiEntradas;
     public javax.swing.JMenuItem jmiProductos;
     public javax.swing.JMenuItem jmiProveedores;
