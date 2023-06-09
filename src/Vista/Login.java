@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.LoginControlador;
 import Modelo.ModeloLogin;
+import java.awt.Toolkit;
 
 public class Login extends javax.swing.JFrame {
     
