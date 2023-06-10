@@ -42,7 +42,7 @@ public class ModeloDepartamentos {
         try {
 
             String sql = """
-                          SELECT ID, Nombre_departamento FROM Departamentos;
+                          SELECT * FROM Departamentos;
                           """;
 
             con = cn.getConnection();
@@ -92,14 +92,13 @@ public class ModeloDepartamentos {
 
             // Se hace una consulta para saber el id del usuario y poder actualizar los datos
             String sql = "SELECT ID FROM Departamentos WHERE Nombre_departamento = ?";
-            String sqlActilizar = "UPDATE Departamentos SET Nombre_departamento = ?;";
+            String sqlActualizar = "UPDATE Departamentos SET Nombre_departamento = ? WHERE ID = ?;";
             
             con = cn.getConnection();
 
             // Obtener el id para actualizar los datos.
             ps = con.prepareStatement(sql);
             ps.setString(1, departamento.getNombreDepatamento());
-            ps.executeQuery();
 
             // retorna un ResultSet y se almacena en rs
             rs = ps.executeQuery();
@@ -108,8 +107,9 @@ public class ModeloDepartamentos {
             }
 
             // Actulizar los datos de tabla direccion_cliente
-            ps = con.prepareStatement(sqlActilizar);
+            ps = con.prepareStatement(sqlActualizar);
             ps.setString(1, departamento.getNombreDepatamento());
+            ps.setInt(2, departamento.getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {

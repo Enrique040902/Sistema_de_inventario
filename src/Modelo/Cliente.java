@@ -6,6 +6,7 @@ public class Cliente {
     private int id;
     private String nombre;
     private String telefono;
+    private int idDireccion;
     
     // Atributos de la tabla Direccion_cliente
     private String nombreCalle;
@@ -14,14 +15,25 @@ public class Cliente {
     
     public Cliente() {}
 
-    public Cliente(int id, String nombre, String telefono, String nombreCalle, String numeroCalle, String estado) {
+    public Cliente(int id, String nombre, String telefono, int idDireccion, String nombreCalle, String numeroCalle, String estado) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
+        this.idDireccion = idDireccion;
         this.nombreCalle = nombreCalle;
         this.numeroCalle = numeroCalle;
         this.estado = estado;
     }
+
+    public int getIdDireccion() {
+        return idDireccion;
+    }
+
+    public void setIdDireccion(int idDireccion) {
+        this.idDireccion = idDireccion;
+    }
+    
+    
 
     public int getId() {
         return id;

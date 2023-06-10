@@ -79,7 +79,7 @@ public class ProductosControlador implements ActionListener {
 
             JOptionPane.showMessageDialog(frmProductos, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
-        }else {
+        } else {
 
             if (!departamentoSeleccionado) {
 
@@ -201,26 +201,26 @@ public class ProductosControlador implements ActionListener {
 
     private void actualizarProductos() {
 
-        String departamento = frmProductos.jcbDepartamento.getSelectedItem().toString();
-        String proveedor = frmProductos.jcbProveedor.getSelectedItem().toString();
-
         boolean departamentoSeleccionado = frmProductos.jcbDepartamento.getSelectedIndex() != 0;
         boolean proveedorSeleccionado = frmProductos.jcbProveedor.getSelectedIndex() != 0;
 
-        if (frmProductos.jtxtId.getText().equals("") || frmProductos.jtxtNombreProducto.getText().equals("") || frmProductos.jtxtMarca.getText().equals("")
-                || frmProductos.jtxtDescipción.getText().equals("") || frmProductos.jtxtPrecioVenta.getText().equals("") || frmProductos.jtxtPrecioCompra.getText().equals("")
-                || frmProductos.jtxtStock.getText().equals("") || proveedorSeleccionado || departamentoSeleccionado) {
+        if (!"".equals(frmProductos.jtxtId.getText()) || !"".equals(frmProductos.jtxtNombreProducto.getText()) || !"".equals(frmProductos.jtxtMarca.getText())
+                || !"".equals(frmProductos.jtxtDescipción.getText()) || !"".equals(frmProductos.jtxtPrecioVenta.getText()) || !"".equals(frmProductos.jtxtPrecioCompra.getText())
+                || !"".equals(frmProductos.jtxtStock.getText()) || !departamentoSeleccionado || !proveedorSeleccionado) {
 
-            JOptionPane.showMessageDialog(frmProductos, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
-
-        } else {
-
+            String departamento = frmProductos.jcbDepartamento.getSelectedItem().toString();
+            String proveedor = frmProductos.jcbProveedor.getSelectedItem().toString();
+            
             modProductos.actualizarRegistro(frmProductos.jtxtId.getText(), frmProductos.jtxtNombreProducto.getText(), frmProductos.jtxtMarca.getText(),
                     frmProductos.jtxtDescipción.getText(), frmProductos.jtxtPrecioVenta.getText(), frmProductos.jtxtPrecioCompra.getText(),
                     frmProductos.jtxtStock.getText(), proveedor, departamento);
             listarProductos();
             limpiarCeldas();
             JOptionPane.showMessageDialog(null, "Datos del productos actualizados", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+
+            JOptionPane.showMessageDialog(frmProductos, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
         }
 

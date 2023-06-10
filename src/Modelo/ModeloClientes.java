@@ -77,16 +77,27 @@ public class ModeloClientes {
     public void elimiarRegistro(String valor) {
 
         // setencias que eliminan los valores.
-        String sqlDireccionCliente = "DELETE FROM Direccion_cliente WHERE id = " + valor + ";";
-        String sqlClientes = "DELETE FROM Clientes WHERE ID_direccionC = " + valor + ";";
+        String sqlIdDireccionC = "SELECT Id_direccionC FROM Clientes WHERE id = ?";
+        String sqlDireccionCliente = "DELETE FROM Direccion_cliente WHERE id = ?;";
+        String sqlClientes = "DELETE FROM Clientes WHERE ID =" + valor + ";";
         
         try {
 
             con = cn.getConnection();
+            
+            ps = con.prepareStatement(sqlIdDireccionC);
+            ps.setInt(1, Integer.parseInt(valor));
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                cliente.setIdDireccion(rs.getInt("Id_direccionC"));
+            }
+            
             ps = con.prepareStatement(sqlClientes);
             ps.executeUpdate();
 
             ps = con.prepareStatement(sqlDireccionCliente);
+            ps.setInt(1, cliente.getIdDireccion());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -114,21 +125,30 @@ public class ModeloClientes {
         try {
 
             // Se hace una consulta para saber el id del usuario y poder actualizar los datos
-            String sqlIdCliente = "SELECT ID FROM Clientes WHERE Nombre = ?";
+            String sqlIdCliente = "SELECT ID FROM Clientes WHERE Nombre = ? ";
+            String sqlIdDireccionC = "SELECT Id_direccionC FROM Clientes WHERE id = ?";
 
             String sqlDireccionCliente = "UPDATE Direccion_cliente SET Nombre_calle = ?, Numero_calle = ?, Estado = ? WHERE id = ?;";
-            String sqlCliente = "UPDATE Clientes SET Nombre = ?, Telefono = ? WHERE id_direccionC = ?;";
+            String sqlCliente = "UPDATE Clientes SET Nombre = ?, Telefono = ? WHERE id = ?;";
 
             con = cn.getConnection();
-
-            // Obtener el id para actualizar los datos.
+            
+            // obtener el id del cliente
             ps = con.prepareStatement(sqlIdCliente);
             ps.setString(1, cliente.getNombre());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cliente.setId(rs.getInt("ID"));
+            }
+
+            // Obtener el id para actualizar los datos.
+            ps = con.prepareStatement(sqlIdDireccionC);
+            ps.setInt(1, cliente.getId());
 
             // retorna un ResultSet y se almacena en rs
             rs = ps.executeQuery();
             if (rs.next()) {
-                cliente.setId(rs.getInt("ID")); // se guarda en setId() y usarlo para las demas sentencias SQL
+                cliente.setIdDireccion(rs.getInt("Id_direccionC"));
             }
 
             // Actulizar los datos de tabla direccion_cliente
@@ -136,7 +156,7 @@ public class ModeloClientes {
             ps.setString(1, cliente.getNombreCalle());
             ps.setString(2, cliente.getNumeroCalle());
             ps.setString(3, cliente.getEstado());
-            ps.setInt(4, cliente.getId());
+            ps.setInt(4, cliente.getIdDireccion());
             ps.executeUpdate();
 
             // Actulizar los datos de tabla clientes

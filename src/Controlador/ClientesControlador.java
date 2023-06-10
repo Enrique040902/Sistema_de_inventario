@@ -7,6 +7,9 @@ import Vista.Clientes;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,8 +33,6 @@ public class ClientesControlador implements ActionListener {
         frmClientes.btnEliminar.addActionListener(this);
         frmClientes.btnEditar.addActionListener(this);
         frmClientes.btnConsultar.addActionListener(this);
-        
-
     }
 
     @Override
@@ -69,6 +70,8 @@ public class ClientesControlador implements ActionListener {
 
             JOptionPane.showMessageDialog(frmClientes, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
+        } else if (telefono.length() > 10) {
+            JOptionPane.showMessageDialog(frmClientes, "Debe tener un maximo de 10 digitos", "Avertencia", JOptionPane.WARNING_MESSAGE);
         } else {
 
             if (modCliente.comprobarExistencia(nombreCliente) == 0) {
