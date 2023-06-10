@@ -149,11 +149,17 @@ public class SalidasControlador implements ActionListener {
     }
 
     private void actualizarSalida() {
+        
+        String cantidad = frmSalidas.jtxtCantidad.getText();
 
         if ("".equals(frmSalidas.jtxtCantidad.getText()) || "".equals(((JTextField) frmSalidas.jdcFecha.getDateEditor().getUiComponent()).getText())) {
 
             JOptionPane.showMessageDialog(null, "Llene los campos a actualizar", "Aviso", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } else if (!cantidad.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmSalidas, "Solo valores númericos sin punto", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        }else {
             String fecha = ((JTextField) frmSalidas.jdcFecha.getDateEditor().getUiComponent()).getText();
             modSalida.actualizarSalida(Integer.parseInt(frmSalidas.jtxtCantidad.getText()), Date.valueOf(fecha));
             listarSalidas();

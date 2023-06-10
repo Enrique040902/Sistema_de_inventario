@@ -59,7 +59,7 @@ public class EntradasControlador implements ActionListener {
 
         } else if (!cantidad.matches("\\d+")) {
 
-            JOptionPane.showMessageDialog(frmEntradas, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(frmEntradas, "Solo valores númericos sin punto", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
         } else {
 
@@ -151,11 +151,16 @@ public class EntradasControlador implements ActionListener {
     }
 
     private void actualizarEntrada() {
+        String cantidad = frmEntradas.jtxtCantidad.getText();
 
         if ("".equals(frmEntradas.jtxtCantidad.getText()) || "".equals(((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText())) {
 
             JOptionPane.showMessageDialog(null, "Llene los campos a actualizar", "Aviso", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } else if (!cantidad.matches("\\d+")) {
+
+            JOptionPane.showMessageDialog(frmEntradas, "Solo valores númericos sin punto", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        }else {
             String fecha = ((JTextField) frmEntradas.jdcFecha.getDateEditor().getUiComponent()).getText();
             modEntrada.actualizarRegistro(Integer.parseInt(frmEntradas.jtxtCantidad.getText()), Date.valueOf(fecha));
             listarEntradas();
