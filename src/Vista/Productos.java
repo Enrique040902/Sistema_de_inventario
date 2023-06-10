@@ -86,6 +86,8 @@ public class Productos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Clave");
 
+        jtxtId.setEditable(false);
+
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre del producto");
 
