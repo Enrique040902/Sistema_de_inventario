@@ -71,7 +71,7 @@ public class ClientesControlador implements ActionListener {
             JOptionPane.showMessageDialog(frmClientes, "Solo valores númericos", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
         } else if (telefono.length() > 10) {
-            JOptionPane.showMessageDialog(frmClientes, "Debe tener un maximo de 10 digitos", "Avertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(frmClientes, "El telefono no debe tener más de 10 digitos", "Avertencia", JOptionPane.WARNING_MESSAGE);
         } else {
 
             if (modCliente.comprobarExistencia(nombreCliente) == 0) {
@@ -164,6 +164,9 @@ public class ClientesControlador implements ActionListener {
                 || frmClientes.jtxtNumeroCalle.getText().equals("") || frmClientes.jtxtEstado.getText().equals("")) {
 
             JOptionPane.showMessageDialog(frmClientes, "Llene los campos correspondientes", "Avertencia", JOptionPane.WARNING_MESSAGE);
+
+        } else if (frmClientes.jtxtTelefono.getText().length() > 10) {
+            JOptionPane.showMessageDialog(frmClientes, "El telefono no debe tener más de 10 digitos", "Avertencia", JOptionPane.WARNING_MESSAGE);
 
         } else {
 
