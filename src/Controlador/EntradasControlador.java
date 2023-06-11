@@ -74,8 +74,7 @@ public class EntradasControlador implements ActionListener {
         }
 
     }
-
-    // Método para listar a los usuarios en en jtUsuarios
+    
     private void listarEntradas() {
 
         modTablaEntradas.setRowCount(0);
@@ -166,7 +165,7 @@ public class EntradasControlador implements ActionListener {
             listarEntradas();
             limpiarCeldas();
 
-            JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Entrada actualizado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

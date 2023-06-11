@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class ConexionBD {
     
     private final String bd = "Sistema_inventario";
-    private final String user = "root";
-    private final String pass = "root";
+    private final String user = "proyectoIS";
+    private final String pass = "proyectoIS";
     private final String url = "jdbc:mysql://localhost:3306/" + bd;
     private Connection con = null;
     
